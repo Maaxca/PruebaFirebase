@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Prueba Firebase</string>
+    <string name="prefs_file">com.exameple.pruebafirebase.PREFERENCE_FILE_KEY</string>
+</resources>
