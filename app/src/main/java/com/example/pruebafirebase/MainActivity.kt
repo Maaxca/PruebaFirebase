@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         var signUpButton: Button=findViewById(R.id.LogOutButton)
         var loginButton: Button=findViewById(R.id.loginButton)
         var googleButton: Button=findViewById(R.id.GoogleButton)
+        var contraseñaButton: Button=findViewById(R.id.ContraseñaButton)
         var emailEditText: EditText=findViewById(R.id.emailEditText)
         var PasswordEditText: EditText=findViewById(R.id.passwordEditText)
 
@@ -94,13 +95,16 @@ class MainActivity : AppCompatActivity() {
         }
         googleButton.setOnClickListener {
             val googleConf=GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.prefs_file))
+                .requestIdToken("1008744362853-mmerf0v426pljufrj29fc76qss5lg8ti.apps.googleusercontent.com")
                 .requestEmail()
                 .build()
             val googleClient=GoogleSignIn.getClient(this,googleConf)
             googleClient.signOut()
 
             startActivityForResult(googleClient.signInIntent,GOOGLE_SIGN_IN)
+        }
+        contraseñaButton.setOnClickListener {
+            FirebaseAuth.getInstance().sendPasswordResetEmail(emailEditText.text.toString())
         }
 
     }
